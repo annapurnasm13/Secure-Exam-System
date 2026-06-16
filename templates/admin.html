@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <strong>Admin Dashboard</strong>
+        <nav>
+            <a href="/dashboard">Analytics</a>
+            <a href="/logs">Audit Logs</a>
+            <a class="danger" href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main class="page">
+        <section class="panel">
+            <h1>Upload Question Paper</h1>
+            <form action="/upload" method="POST" enctype="multipart/form-data" class="stack busy-form">
+                <label>
+                    Select Question Paper
+                    <input type="file" name="file" required>
+                </label>
+                <label>
+                    Release Time
+                    <input type="datetime-local" name="release_time" required>
+                </label>
+                <label>
+                    Encryption Passphrase
+                    <input type="password" name="passphrase" required>
+                </label>
+                <button type="submit" data-busy-text="Encrypting...">Encrypt and Upload</button>
+            </form>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('.busy-form').forEach(function (form) {
+            form.addEventListener('submit', function () {
+                var button = form.querySelector('button[type="submit"]');
+                if (button) {
+                    button.disabled = true;
+                    button.textContent = button.dataset.busyText || 'Working...';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

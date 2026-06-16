@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decrypt Paper</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="center-screen">
+    <main class="panel login-panel">
+        <h1>Decrypt Paper</h1>
+        <p class="muted">{{ filename }}</p>
+        <form action="/download" method="POST" class="stack busy-form">
+            <input type="hidden" name="filename" value="{{ filename }}">
+            <input type="password" name="passphrase" placeholder="Encryption passphrase" required>
+            <button type="submit" data-busy-text="Decrypting...">Decrypt and Download</button>
+        </form>
+        <p><a href="/faculty">Back to papers</a></p>
+    </main>
+    <script>
+        document.querySelectorAll('.busy-form').forEach(function (form) {
+            form.addEventListener('submit', function () {
+                var button = form.querySelector('button[type="submit"]');
+                if (button) {
+                    button.disabled = true;
+                    button.textContent = button.dataset.busyText || 'Working...';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

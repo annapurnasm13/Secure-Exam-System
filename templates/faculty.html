@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <strong>Faculty Dashboard</strong>
+        <nav><a class="danger" href="/logout">Logout</a></nav>
+    </header>
+    <main class="page">
+        <section class="panel wide">
+            <h1>Available Papers</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Encrypted File</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for paper in papers %}
+                    <tr>
+                        <td>{{ paper.display_name }}</td>
+                        <td><a class="button small" href="/download/{{ paper.download_path }}">Decrypt Download</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
