@@ -2,6 +2,12 @@
 
 This version uses no third-party libraries, no external APIs, no CDN files, and no API keys.
 
+## Features
+- AES-256 CTR encryption
+- Time-based file release
+- Passphrase-based decryption
+- Admin and Faculty roles
+- HMAC-SHA256 integrity verification
 ## Run
 
 ```bash
